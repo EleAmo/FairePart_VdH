@@ -173,7 +173,7 @@ html, body {
 /* Conteneur pour les boutons d'image */
 .buttons-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     justify-items: center;
     margin-top: 0px;
@@ -292,7 +292,7 @@ video { width: 300px; max-width: 100%; height: auto; }
   /* Accueil : grille 2×2 compacte */
   .buttons-container {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 12px;
     row-gap: 10px;
     justify-items: center;
