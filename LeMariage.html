@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nous nous marrions! - Le programme</title>
+  <link rel="stylesheet" href="Css/styles.css" />
+  <link rel="stylesheet" href="Css/LM_styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Bannière en haut -->
+  <div class="banner">
+    <img src="Images/Menu100px.png" alt="Menu" class="menu-icon" />
+    <img src="Images/SITE_WEB_PNG_46X18MM.png" alt="Logo" class="logo-center" />
+  </div>
+
+  <!-- Menu déroulant -->
+  <nav class="dropdown-menu-enfants">
+    <ul>
+      <li><a href="index_complet.html">Accueil</a></li>
+      <li><a href="NotreHistoire.html">Notre histoire</a></li>
+      <li><a href="LesTemoins.html">Les témoins</a></li>
+      <li><a href="LesInfosPratiques.html">Les infos pratiques</a></li>
+    </ul>
+  </nav>
+
+  <main class="LM-content">
+    <!-- Encart 1 : Quand, où ? -->
+    <section class="LM-card LM-when">
+      <!--h2 class="LM-section-title">Là où nos chemins se lieront pour la vie</h2-->
+
+      <div class="LM-when-grid">
+        
+          <!-- Colonne texte -->
+        <div class="LM-when-info">
+          <p class="LM-when-text">
+            <span class="LM-when-lead">Soyez avec nous pour célébrer notre union</span><br/>
+            <span class="LM-when-date">Le 04/07/2026</span><br>
+            <span class="LM-when-time">à 16 h</span><br>
+            <span class="LM-when-place">au château de Saint Offenge</span>
+            <br><span class="LM-when-address">(50 Rte Sainte-Euphémie, 73100 Saint-Offenge)</span><br><br>
+            <span class="LM-when-lead">Veuillez confirmer votre pésence à la cérémonie, à la soirée et le dimanche avant le 15/03/2026</span>
+          </p>
+        </div>
+
+
+        <!-- Colonne carte -->
+        <div class="LM-map">
+          <div class="LM-map-aspect">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2726.8025138553994!2d6.0007103117825356!3d45.73471277095906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478ba21b7642895f%3A0xf4d95649f645708c!2sCh%C3%A2teau%20de%20Saint%20Offenge%20-%20Mariages%2C%20S%C3%A9minaires%2C%20Maison%20d&#39;H%C3%B4tes!5e1!3m2!1sfr!2sfr!4v1762690333468!5m2!1sfr!2sfr"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Encart 2 : Les trois blocs programme -->
+    <section class="LM-cards">
+        
+        <article class="LM-card">
+          <h3 class="LM-card-title">L’après-midi</h3>
+          <ul class="LM-schedule-list">
+            <li><span class="LM-time">16 h</span> : Accueil</li>
+            <li><span class="LM-time">16 h 30 </span> : Cérémonie laïque dans le parc du château</li>
+            <li><span class="LM-time">17 h 30 </span> : Vin d'honneur, séance photo, surprises</li>
+          </ul>
+        </article>
+
+
+      <article class="LM-card">
+        <h3 class="LM-card-title">La soirée</h3>
+            <ul class="LM-schedule-list">
+            <li><span class="LM-time">20 h</span> : Cocktail dînatoire </li>
+            <li><span class="LM-time">22 h 30 </span> : Ouverture du bal </li>
+          </ul>
+      </article>
+
+      <article class="LM-card">
+        <h3 class="LM-card-title">Le dimanche</h3>
+            <ul class="LM-schedule-list">
+            <li><span class="LM-time">11 h 30</span> : Retour de noces </li>
+            <li><span class="LM-time">14 h 30 </span> : Fin des festivités </li>
+          </ul>
+      </article>
+    </section>
+  </main>
+
+  <!-- Script pour toggle menu -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuIcon = document.querySelector('.menu-icon');
+      const menu = document.querySelector('.dropdown-menu-enfants');
+
+      menuIcon.addEventListener('click', function (e) {
+        e.stopPropagation();
+        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!menu.contains(e.target) && menu.style.display === 'flex') {
+          menu.style.display = 'none';
+        }
+      });
+
+      menu.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+    });
+  </script>
+
+</body>
+</html>

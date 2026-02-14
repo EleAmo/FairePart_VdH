@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Les Témoins</title>
+
+  <!-- CSS global du site -->
+  <link rel="stylesheet" href="Css/styles.css" />
+  <!-- CSS spécifique à cette page -->
+  <link rel="stylesheet" href="Css/LT_styles.css" />
+
+  <!-- Police déjà utilisée sur le site -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+</head>
+
+<body class="temoins-page">
+    <!-- Bannière en haut -->
+    <div class="banner">
+        <img src="Images/Menu100px.png" alt="Menu" class="menu-icon">
+        <img src="Images/SITE_WEB_PNG_46X18MM.png" alt="Logo" class="logo-center">
+    </div>
+    
+    <!-- Menu déroulant -->
+    <nav class="dropdown-menu-enfants">
+        <ul>
+            <li><a href="index_complet.html">Accueil</a></li>
+            <li><a href="NotreHistoire.html">Notre histoire</a></li>           
+            <li><a href="LeMariage.html">Le mariage</a></li>
+            <li><a href="LesInfosPratiques.html">Les infos pratiques</a></li>
+        </ul>
+    </nav>
+
+  <main class="LT-content">
+    <h1 class="LT-hook">
+      Ils nous sont chers, ils ont toujours été là pour nous, voici nos témoins qui se présentent!
+    </h1>
+
+    <section class="LT-grid">
+      <article class="LT-card">
+        <div class="LT-photo-wrap">
+          <img class="LT-photo LT-photo--flo"  src="Images/flo.jpg"  alt="Flo"  />
+        </div>
+        <div class="LT-info">
+          <h2 class="LT-firstname">Florent,</h2>
+          <p class="LT-note">
+            Dit Flo. C’est l’homme qui peut déboucher tes canalisations, régler ta chaudière, puis grimper un mur en granit avec la grâce d’un bouquetin savoyard. Il maîtrise aussi bien le chalumeau que le mousqueton, et son slogan non officiel c’est : "Si c’est bouché, je débouche. Si c’est froid, je chauffe. Et si t’as tort… prépare toi à débattre, ça va être long..."! 
+                <br><br>
+            Son talent secret, il en a un, mais personne n’a jamais survécu assez longtemps pour le raconter. Même lui ne préfère pas en parler.  
+                <br><br>
+            Bref, c’est un homme loyal, un râleur attachant et le genre à grimper un mur le matin, vous réparer une fuite l’après-midi et à vous accompagner en soirée en râlant… mais toujours avec le cœur!
+          </p>
+        </div>
+      </article>
+
+      <article class="LT-card">
+        <div class="LT-photo-wrap">
+            <img class="LT-photo LT-photo--laet" src="Images/laet.jpg" alt="Laet" />
+        </div>
+        <div class="LT-info">
+          <h2 class="LT-firstname">Laetitia, </h2>
+          <p class="LT-note">
+              Dite Laet. C'est cette amie au rire original mais contagieux, partante pour vous accompagner et réaliser avec vous vos surprises ou plans diaboliques lors d'un weekend, ou plus!
+                <br><br>
+              Amoureuse de l'amour, je suis bonne entremetteuse pour trouver votre âme soeur (preuve en est des mariés du jour!)
+                <br><br>   
+              Fan des danses endiablées, je suis toujours partante pour vous accompagner sur la piste. J'ai aussi un bon lever de coude pour remplir ton verre et trinquer avec vous si vous remplissez le mien!
+          </p>
+        </div>
+      </article>
+
+      <article class="LT-card">
+        <div class="LT-photo-wrap">
+          <img class="LT-photo LT-photo--emma" src="Images/emma.jpg" alt="Emma" />
+        </div>
+        <div class="LT-info">
+          <h2 class="LT-firstname">Emmanuelle,</h2>
+          <p class="LT-note">
+                Dite Emma. C'est la grande soeur au coeur grand ouvert, à la tête qui veut tout prévoir, et au sourire qui finit toujours par revenir… Même après trois imprévus, deux plans de secours et un bouton de chemise qui décide de vivre sa vie...
+                <br><br>
+                En tant que témoin, j’apporte :<br>
+                - de l’amour à revendre<br>
+                - de l’organisation (parfois trop… mais c’est pour votre bien)<br>
+                - des solutions avant même que les problèmes n’arrivent<br>
+                - et surtout, la garantie que personne ne boude, ne stresse ou ne reste assis trop longtemps!<br>
+                <br>
+                Bref, je suis la témoin qui veille, qui recadre, qui rassure, qui rigole… et qui embarque tout le monde pour que cette journée soit vraiment inoubliable!
+          </p>
+        </div>
+      </article>
+
+        <article class="LT-card">
+            <div class="LT-photo-wrap">
+                <img class="LT-photo LT-photo--ludo" src="Images/Ludo_base2.jpg" alt="Ludo" />
+            </div>
+            <div class="LT-info">
+                <h2 class="LT-firstname">Ludovic,</h2>
+                <p class="LT-note">
+                    Dit Ludo. C'est celui qui est né en Savoie de parents Bourguignons. Il a hérité du meilleur des deux mondes : le goût du bon vin, et celui du fromage onctueux.<br><br>
+Ambassadeur du bien vivre, il est toujours partant pour un apéro, un repas entre amis ou une fête qui fint (souvent) bien plus tard que prévu.<br><br>
+Passionné de pêche, il partage avec le marié l'art de patienter des heures au bord de l'eau... pour finalement rentrer avec des histoires beaucoup plus grosses que les poissons.<br><br>
+Son super pouvoir? Transformer n'importe quelle rencontre en moment de convivialité. Avec lui, même un pique nique sous la pluie devient un banquet de rois!
+                </p>
+            </div>
+        </article>
+    </section>
+  </main>
+    
+    <!-- Script pour toggle menu -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuIcon = document.querySelector('.menu-icon');
+        const menu = document.querySelector('.dropdown-menu-enfants');
+
+        // Toggle menu au clic sur l'icône
+        menuIcon.addEventListener('click', function (e) {
+            e.stopPropagation();
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Fermer le menu si on clique en dehors
+        document.addEventListener('click', function (e) {
+            if (!menu.contains(e.target) && menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            }
+        });
+
+        // Empêche les clics dans le menu de fermer le menu
+        menu.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    });
+    </script>
+</body>
+</html>

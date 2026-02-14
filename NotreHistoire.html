@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nous nous marrions! - Notre histoire</title>
+    <link rel="stylesheet" href="Css/styles.css">        <!-- CSS global -->
+    <link rel="stylesheet" href="Css/NH_styles.css"> <!-- CSS spécifique à cette page -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Bannière en haut -->
+    <div class="banner">
+        <img src="Images/Menu100px.png" alt="Menu" class="menu-icon">
+        <img src="Images/SITE_WEB_PNG_46X18MM.png" alt="Logo" class="logo-center">
+    </div>
+    
+    <!-- Menu déroulant enfants -->
+    <nav class="dropdown-menu-enfants">
+        <ul>
+            <li><a href="index_complet.html">Accueil</a></li>          
+            <li><a href="LeMariage.html">Le mariage</a></li>
+            <li><a href="LesTemoins.html">Les témoins</a></li>
+            <li><a href="LesInfosPratiques.html">Les infos pratiques</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Contenu principal -->
+<div class="NH-content">
+    <div class="NH-body-container">
+        <!-- Photo -->
+        <div class="NH-photo-container">
+            <img src="Images/Nous2bis.jpg" alt="Nous deux" class="NH-profile-photo">
+        </div>
+
+        <!-- Texte + titre -->
+        <div class="NH-presentation-text">
+            <h1 class="NH-title">Notre Histoire!</h1>
+            <p>
+                Tout a commencé un soir de mai 2015, dans un bar, un peu par hasard… ou plutôt grâce à une amie bien décidée à provoquer la rencontre.<br>
+                Très vite, les week-ends, les voyages et les amis ont rythmé nos trois premières années, entre rires, découvertes et quelques valises toujours prêtes. De la coloc de Madame à l’appartement de Monsieur, puis enfin sous le même toit, notre histoire s’est construite pas à pas, avec légèreté et envie d’avancer ensemble. Puis deux petites filles sont venues bouleverser nos vies et leur donner un sens nouveau.<br>
+                La vie ne nous a pas toujours ménagés, mais elle nous a appris à nous serrer les coudes, à nous soutenir et à profiter pleinement des instants simples. Aujourd’hui, après toutes ces années à grandir côte à côte, nous avons choisi de dire oui à la suite de cette belle aventure.
+            </p>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- Script pour toggle menu -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuIcon = document.querySelector('.menu-icon');
+        const menu = document.querySelector('.dropdown-menu-enfants');
+
+        // Toggle menu au clic sur l'icône
+        menuIcon.addEventListener('click', function (e) {
+            e.stopPropagation();
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Fermer le menu si on clique en dehors
+        document.addEventListener('click', function (e) {
+            if (!menu.contains(e.target) && menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            }
+        });
+
+        // Empêche les clics dans le menu de fermer le menu
+        menu.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    });
+    </script>
+    
+</body>
+</html>
