@@ -1,0 +1,152 @@
+/* Conteneur principal avec fond et superposition */
+.NH-content {
+    margin-top: 10vh;
+    padding: 00px;
+    display: flex;
+    justify-content: center; /* centre le container global */
+    height: calc(100vh - 10vh);
+    position: relative;
+    background-image: url('../Images/Fond.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; /* assure que rien ne dépasse */
+}
+
+.NH-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6); /* superposition semi-transparente */
+    z-index: 1;
+}
+
+/* Conteneur pour photo + texte */
+.NH-body-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    max-width: 900px; /* largeur max du bloc */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    width: 100%;
+    position: relative;
+    z-index: 2; /* au-dessus de la superposition */
+}
+
+/* Photo */
+.NH-photo-container {
+    flex: 0 0 33%; /* 1/3 de la largeur */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.NH-profile-photo {
+    width: 100%;
+    max-width: 400px; /* limite la taille max pour desktop */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Texte + titre */
+.NH-presentation-text {
+    flex: 1; /* prend le reste de l'espace */
+    font-size: 14px;
+    line-height: 1.6;
+    color: #000000;
+}
+
+/* Titre dans le bloc texte */
+.NH-title {
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #ba9991;
+    font-family: 'Great Vibes', cursive;
+}
+
+/* Responsive pour smartphone */
+@media (max-width: 768px) {
+    .NH-body-container {
+        flex-direction: column; /* image au-dessus du texte */
+        align-items: center;
+    }
+
+    .NH-photo-container,
+    .NH-presentation-text {
+        flex: 1 1 100%; /* prennent toute la largeur */
+    }
+
+    .NH-profile-photo {
+        max-width: 80%; /* limite la taille sur mobile */
+        height: auto;
+    }
+
+    .NH-title {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .NH-presentation-text {
+        text-align: center;
+        margin-top: 15px;
+    }
+}
+
+
+/* =========================
+   responsive v3 — mobile uniquement
+   Objectif: fond plein écran + centrage vertical + marge de sécurité
+   ========================= */
+@media (max-width: 767px) {
+  html, body {
+    min-height: 100svh;                          /* responsive v3 */
+    background-image: url('../Images/Fond.jpg'); /* responsive v3 */
+    background-size: cover;                      /* responsive v3 */
+    background-repeat: no-repeat;                /* responsive v3 */
+    background-position: top center;             /* responsive v3 */
+    background-attachment: scroll;               /* responsive v3 */
+  }
+
+  .NH-content { display:flex; flex-direction:column; justify-content:center; align-items:center; min-height: 100svh; padding-bottom: 40px; /* responsive v3 */ }
+
+  /* éviter débordement horizontal */
+  body { overflow-x: hidden; /* responsive v3 */ }
+
+  /* transparence des conteneurs pour ne pas recouvrir le fond */
+  .NH-content { background: transparent !important; /* responsive v3 */ }
+}
+
+
+/* =========================
+   responsive v3.2 — Notre Histoire : éviter le rognage de la photo
+   ========================= */
+@media (max-width: 767px) {
+  /* Le conteneur ne doit pas enfermer le contenu */
+  .NH-content { height: auto !important; min-height: auto !important; overflow: visible !important; background: transparent !important;
+    height: auto !important;        /* responsive v3.2: était calc(100vh - 10vh) */
+                 /* responsive v3.2: fond plein écran agréable */
+    overflow: visible !important;   /* responsive v3.2: ne pas couper l'image */
+    margin-top: 6vh;                /* responsive v3.2: marge douce sous la bannière */
+  }
+
+  /* La photo doit garder ses proportions */
+  .NH-profile-photo {
+    width: 100%;
+    max-width: 95vw;                /* responsive v3.2 */
+    height: auto !important;        /* responsive v3.2 */
+    object-fit: contain !important; /* responsive v3.2 */
+    object-position: center;        /* responsive v3.2 */
+    display: block;
+  }
+
+  /* Centrer verticalement la photo dans son conteneur */
+  .NH-photo-container {
+    align-items: center;            /* responsive v3.2 */
+  }
+}

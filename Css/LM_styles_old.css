@@ -1,0 +1,131 @@
+/* === Page Le Mariage : réactiver le scroll (desktop & mobile) === */
+html, body {
+  overflow-y: auto !important;
+  height: auto !important;
+}
+
+/* ------------------ Conteneur principal ------------------ */
+.LM-content {
+  position: relative;
+  margin-top: 10vh;             /* sous la bannière fixe */
+  padding: 24px;
+  display: block !important;    /* empile les sections */
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+}
+
+/* Voile doux sur le fond (pas sur les cartes) */
+.LM-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.60);
+  pointer-events: none;
+  z-index: 0;
+}
+/* Tout le contenu passe au-dessus du voile */
+.LM-content * { position: relative; z-index: 1; }
+
+/* Chaque section centrée et limitée en largeur */
+.LM-content > section {
+  max-width: 1100px;
+  margin: 0 auto 24px auto;
+}
+
+/* ------------------ Styles communs (alignés sur LT) ------------------ */
+.LM-section-title,
+.LM-card-title {
+  margin: 0 0 12px 0;
+  text-align: center;
+  color: #ba9991;
+  font-family: 'Great Vibes', cursive;
+}
+.LM-section-title { font-size: 28px; }
+.LM-card-title    { font-size: 22px; }
+
+.LM-card {
+  background: #fff;                 /* cartes opaques, lisibles */
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.LM-card-text,
+.LM-when-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #444;
+}
+.LM-when-lead {
+  font-family: 'Great Vibes', cursive;
+  color: #ba9991;
+  font-size: 24px;
+}
+
+/* ------------------ Encart 1 : "Quand, où ?" ------------------ */
+.LM-when { margin-bottom: 20px; }
+
+.LM-when-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* texte | carte (valeur par défaut) */
+  gap: 16px;
+  align-items: center;
+}
+
+.LM-map-aspect {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.LM-map-aspect iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+
+/* ------------------ Encart 2 : les trois petits blocs ------------------ */
+.LM-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* ====================== Responsive ====================== */
+
+/* — Mobile (<=767px) : 1 colonne + fond non bloquant — */
+@media (max-width: 767px) {
+  .LM-when-grid { grid-template-columns: 1fr; }   /* map sous le texte */
+  .LM-cards     { grid-template-columns: 1fr; }
+  .LM-content   { background: transparent !important; }
+  .LM-content::before { pointer-events: none; }
+  .LM-map-aspect { width: 100%; }                 /* carte pleine largeur en mobile */
+}
+
+/* — Tablette (768–1023px) : 2 colonnes pour les petits encarts — */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .LM-cards { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+  .LM-when-grid .LM-map-aspect { width: 80%; }    /* carte un peu réduite */
+}
+
+/* — Desktop (>=1024px) : largeur maîtrisée + carte compacte à droite — */
+@media (min-width: 1024px) {
+  .LM-when {
+    max-width: 900px;                 /* évite le pavé trop large */
+    margin: 0 auto 30px auto;
+  }
+  .LM-when-grid {
+    grid-template-columns: 1fr 0.9fr; /* + d'espace au texte, carte plus contenue */
+    justify-content: center;
+  }
+  .LM-when-grid .LM-map-aspect {
+    width: 100%;
+    max-width: 380px;                 /* limite visuelle de la carte */
+    aspect-ratio: 1 / 1;              /* rectangle élégant */
+  }
+  .LM-when-grid .LM-when-info { padding-right: 20px; }
+}

@@ -1,0 +1,212 @@
+/* ================================
+   Les Infos Utiles — LIU_styles.css
+   Aligné sur LM_styles.css
+   ================================ */
+
+/* Scroll toujours actif sur cette page */
+html, body {
+  overflow-y: auto !important;
+  height: auto !important;
+}
+
+/* ---------- Conteneur principal ---------- */
+.LIU-content {
+  position: relative;
+  margin-top: 10vh; /* sous la bannière fixe */
+  padding: 24px;
+  display: block !important;
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+}
+
+/* Voile doux sur le fond (pas sur les cartes) */
+.LIU-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.60);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Tout le contenu au-dessus du voile */
+.LIU-content * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Titres & cartes ---------- */
+.LIU-section-title,
+.LIU-card-title {
+  margin: 0 0 12px 0;
+  text-align: center;
+  color: #ba9991;
+  font-family: 'Great Vibes', cursive;
+}
+
+.LIU-section-title { font-size: 35px; }
+.LIU-card-title    { font-size: 25px; }
+
+.LIU-card {
+  background: rgba(255, 255, 255, 0.7); 
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 330px;
+}
+
+.LIU-card-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+}
+
+/* ---------- Listes jolies ---------- */
+.LIU-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.LIU-list li {
+  position: relative;
+  padding-left: 28px;
+  margin: 8px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+}
+
+.LIU-list li::before {
+  content: "❀";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #ba9991;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+/* ---------- Grille des cartes ---------- */
+.LIU-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 20px;
+  align-items: stretch;
+  justify-items: center;
+  max-width: 1100px;
+  margin: 24px auto;
+  width: 100%;
+}
+
+/* ---------- En-tête (titre principal) ---------- */
+.LIU-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* centrage horizontal */
+  text-align: center;
+  margin: 0px auto 0px auto;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 16px;
+}
+
+.LIU-header-title {
+  color: #ba9991;
+  font-family: 'Great Vibes', cursive;
+  font-size: 35px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.LIU-header-sub {
+  display: block;
+  font-family: Arial, sans-serif;
+  color: #444;
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+/* ====================== Responsive ====================== */
+
+/* Tablette : 2 colonnes */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .LIU-cards {
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+  }
+}
+
+/* Mobile : 1 colonne */
+@media (max-width: 767px) {
+  .LIU-cards {
+    grid-template-columns: 1fr;
+  }
+  .LIU-content { background: transparent !important; }
+  .LIU-content::before { pointer-events: none; }
+}
+
+/* Effet doux sur les liens "ici" */
+.LIU-link {
+  color: #ba9991;
+  font-weight: bold;
+  text-decoration: underline;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 80%, 100% { opacity: 1; }
+  40% { opacity: 0.3; }
+}
+
+/* Sous-items pour listes imbriquées */
+.LIU-sublist {
+  list-style: none;
+  margin-top: 6px;
+  margin-left: 22px;
+  padding-left: 10px;
+}
+
+.LIU-sublist li::before {
+  content: "•";
+  color: #ba9991;
+  margin-right: 6px;
+}
+
+/* ---- Lissage du scroll en mobile ---- */
+@media (max-width: 767px) {
+  /* 1) pas de parallax/fond fixe (très janky en mobile) */
+  html, body {
+    background-attachment: scroll !important;
+    -webkit-overflow-scrolling: touch; /* iOS inertiel */
+  }
+
+  /* 2) supprimer les voiles/overlays qui forcent des repaints */
+  .content::before,
+  .ladate-content::before,
+  .LM-content::before,
+  .LIU-content::before {
+    content: none !important;         /* retire le pseudo-élément */
+  }
+
+  /* 3) alléger les ombres en mobile (peintures moins lourdes) */
+  .LM-card, .LIU-card {
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08) !important;
+  }
+
+  /* 4) évite les débordements horizontaux (autre cause de jank) */
+  body { overflow-x: hidden !important; }
+}
+
+/* 5) Les éléments fixés/sticky → calés sur le GPU */
+.banner,
+.bottom-container,
+.countdown {
+  transform: translateZ(0);       /* compositing */
+  will-change: transform;         /* hint navigateur */
+}
+

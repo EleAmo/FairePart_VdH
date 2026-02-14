@@ -1,0 +1,142 @@
+/* =========================
+   LT_styles.css — Page LesTémoins
+   ========================= */
+/* Réactiver le scroll UNIQUEMENT sur cette page (desktop & mobile) */
+html, body {
+  overflow-y: auto !important;
+  height: auto !important;
+}
+
+/* S'assurer que le contenu ne bloque pas la hauteur */
+.LT-content {
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+}
+
+/* Desktop (>=768px) */
+.LT-content {
+  margin-top: 10vh;
+  padding: 24px;
+  background: transparent;
+}
+
+.LT-hook {
+  margin: 0 0 16px 0;
+  text-align: center;
+  font-size: 35px;
+  color: #ba9991;
+  font-family: 'Great Vibes', cursive;
+}
+
+/* Grille 2×2 carrés */
+.LT-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* Carte : carré visuel, photo à gauche / texte à droite */
+.LT-card {
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.65);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Photo : même taille pour tous */
+.LT-photo-wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.LT-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Infos à droite */
+.LT-info { align-self: center; }
+.LT-name {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+.LT-note {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #444;
+}
+
+/* Prénom mis en avant (style Notre Histoire) */
+.LT-firstname {
+  font-family: 'Great Vibes', cursive;
+  color: #ba9991;
+  font-size: 30px;
+  margin-right: 6px;
+}
+
+/* =========================
+   Mobile (<=767px)
+   ========================= */
+@media (max-width: 767px) {
+  .LT-content {
+    margin-top: 10vh;
+    padding: 16px;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  .LT-hook {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .LT-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .LT-card {
+    aspect-ratio: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    padding: 12px;
+  }
+
+  .LT-photo-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .LT-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .LT-info { padding-top: 8px; text-align: center; }
+  .LT-name { font-size: 16px; }
+  .LT-note { font-size: 14px; }
+}
+
+/* Option : 2 colonnes pour mobiles larges (420–767px) */
+@media (min-width: 420px) and (max-width: 767px) {
+  .LT-grid { grid-template-columns: 1fr 1fr; }
+}
+
+

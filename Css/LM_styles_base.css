@@ -1,0 +1,103 @@
+/* Conteneur principal avec fond et superposition */
+.LM-content {
+    margin-top: 10vh;
+    padding: 00px;
+    display: flex;
+    justify-content: center; /* centre le container global */
+    height: calc(100vh - 10vh);
+    position: relative;
+    background-image: url('../Images/Fond.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; /* assure que rien ne dépasse */
+}
+
+.LM-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6); /* superposition semi-transparente */
+    z-index: 1;
+}
+
+/* Conteneur pour photo + texte */
+.LM-body-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    max-width: 1200px; /* largeur max du bloc */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 100%;
+    position: relative;
+    z-index: 2; /* au-dessus de la superposition */
+}
+
+/* Texte centré */
+.LM-centered-text {
+    margin-bottom: 0px;
+    color: #ba9991;
+    font-family: 'Great Vibes', cursive;
+    font-size: 25px;
+    z-index: 2;
+    text-align: center;
+}
+
+
+/* Responsive pour smartphone */
+@media (max-width: 768px) {
+    .LM-body-container {
+        flex-direction: column; /* image au-dessus du texte */
+        align-items: center;
+    }
+
+    .LM-photo-container,
+    .LM-presentation-text {
+        flex: 1 1 100%; /* prennent toute la largeur */
+    }
+
+    .LM-profile-photo {
+        max-width: 80%; /* limite la taille sur mobile */
+        height: auto;
+    }
+
+    .LM-title {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .LM-presentation-text {
+        text-align: center;
+        margin-top: 15px;
+    }
+}
+
+
+/* =========================
+   responsive v3 — mobile uniquement
+   Objectif: fond plein écran + centrage vertical + marge de sécurité
+   ========================= */
+@media (max-width: 767px) {
+  html, body {
+    min-height: 100svh;                          /* responsive v3 */
+    background-image: url('../Images/Fond.jpg'); /* responsive v3 */
+    background-size: cover;                      /* responsive v3 */
+    background-repeat: no-repeat;                /* responsive v3 */
+    background-position: top center;             /* responsive v3 */
+    background-attachment: scroll;               /* responsive v3 */
+  }
+
+  .LM-content { display:flex; flex-direction:column; justify-content:center; align-items:center; min-height: 100svh; padding-bottom: 40px; /* responsive v3 */ }
+
+  /* éviter débordement horizontal */
+  body { overflow-x: hidden; /* responsive v3 */ }
+
+  /* transparence des conteneurs pour ne pas recouvrir le fond */
+  .LM-content { background: transparent !important; /* responsive v3 */ }
+}
+
