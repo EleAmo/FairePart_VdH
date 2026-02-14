@@ -93,7 +93,7 @@ html, body {
 
 .LM-when-info {
   grid-area: info;
-  padding-right: 20px;
+  padding-right: 0px;
   align-self: stretch;                /* s'étire comme la carte */
   display: flex;
   flex-direction: column;
@@ -159,7 +159,7 @@ html, body {
 /* carte carrée, largeur maîtrisée */
 .LM-map-aspect {
   position: relative;
-  width: 100%;
+  width: 90%;
   aspect-ratio: 1 / 1;                 
   overflow: hidden;
   border-radius: 10px;
@@ -178,31 +178,76 @@ html, body {
   align-items: stretch;
 }
 
+/* Bouton d'action (réponse formulaire) */
+.LM-cta-btn {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: normal;
+  font-size: 20px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+  line-height: 1;
+  margin-top: 12px;              /* petit spacing au-dessus */
+}
+.LM-cta-btn:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: scale(1);
+}
+
 /* ====================== Responsive ====================== */
+
+/* Mobile */
 @media (max-width: 767px) {
+  /* Empile: texte au-dessus, carte en dessous */
   .LM-when-grid {
     grid-template-columns: 1fr;
     grid-template-areas:
       "info"
-      "map";                     
+      "map";
   }
-  .LM-map-aspect { max-width: none; width: 100%; }
+
+  /* Centre le bloc texte + bouton */
+  .LM-when-info {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    align-items: left;   /* centrage horizontal */
+    justify-content: center;
+    text-align: center;
+  }
+
+  .LM-cta-btn {
+    align-self: center;    /* bouton centré même si contenu plus large */
+    margin-top: 16px;
+  }
+
+  /* Carte pleine largeur et centrée visuellement */
+  .LM-map        { grid-area: map; justify-self: center; }
+  .LM-map-aspect { width: 100%; max-width: none; }
+
+  /* Grille des cartes en 1 colonne, et fond léger */
   .LM-cards     { grid-template-columns: 1fr; }
   .LM-content   { background: transparent !important; }
   .LM-content::before { pointer-events: none; }
 }
 
+/* Tablette */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .LM-cards { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
-  .LM-map-aspect { max-width: 320px; }
+  .LM-cards      { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+  .LM-map-aspect { max-width: 320px; }  /* carte un peu réduite */
 }
 
+/* Desktop */
 @media (min-width: 1024px) {
   .LM-when {
     max-width: 900px;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 30px auto; /* centrage du grand encart */
   }
 }
+
 
 
 /* Liste du programme */
@@ -239,3 +284,4 @@ html, body {
   font-family: 'Great Vibes', cursive;
   font-size: 20px;
 }
+

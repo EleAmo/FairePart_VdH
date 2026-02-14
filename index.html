@@ -31,10 +31,21 @@
   </head>
 
   <body>
-    <p>Redirection en cours vers la page principale...</p>
-    <p>
-      Si la redirection ne fonctionne pas,
-      <a href="index_complet.html">clique ici</a>.
-    </p>
+    <script>
+      try {
+        // On réinitialise l'état d'auth de la session AVANT la redirection
+        sessionStorage.removeItem('isAuthenticated');
+        // Redirection dans le même onglet
+        window.location.replace('index_complet.html');
+      } catch (e) {
+        // Fallback si JS strict/bloqué
+        window.location.href = 'index_complet.html';
+      }
+    </script>
+
+    <noscript>
+      Redirection vers <a href="index_complet.html">index_complet.html</a>
+    </noscript>
   </body>
 </html>
+
